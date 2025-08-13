@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Visitor Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .features {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            background: white;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🏢 Smart Visitor</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/admin/dashboard">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Smart Visitor Management</h1>
+            <p>Streamline your visitor registration and management process with our intelligent system. 
+               Secure, efficient, and user-friendly solution for modern businesses.</p>
+            <div class="cta-buttons">
+                <a href="/register" class="btn btn-primary">Get Started</a>
+                <a href="/login" class="btn btn-secondary">Sign In</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-container">
+            <h2>Why Choose Our System?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Easy Registration</h3>
+                    <p>Quick and simple visitor registration process with intuitive forms and validation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Appointment Management</h3>
+                    <p>Schedule, track, and manage visitor appointments with calendar integration.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Real-time Notifications</h3>
+                    <p>Get instant notifications about visitor arrivals and appointment updates.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics & Reports</h3>
+                    <p>Generate detailed reports and analytics to track visitor patterns and trends.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Enterprise-grade security with role-based access control and data encryption.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast & Reliable</h3>
+                    <p>Lightning-fast performance with 99.9% uptime guarantee for uninterrupted service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add smooth scrolling animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.animation = `fadeInUp 0.6s ease-out forwards`;
+                        }, index * 100);
+                    }
+                });
+            });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
